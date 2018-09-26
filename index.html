@@ -11,6 +11,7 @@
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 
+		<!-- Font Awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 
 		<!-- Normalize -->
@@ -20,8 +21,6 @@
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body ng-controller="homeController as vm">
-
-
 
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -43,12 +42,10 @@
 						<li><a href="#">Enlace 3</a></li>
 					</ul>
 				</div>
-			
 			</div>
 		</nav>
 
 		<div class="container-fluid">
-
 			<h1 class="page-title">Título</h1>
 
 			<div class="panel panel-default">
@@ -57,7 +54,7 @@
 				</div>
 				<div class="panel-body">
 					
-					<div class="row ">   <!-- row-eq-height -->
+					<div class="row ">
 						<div class="col-xs-12 col-md-4">
 							<h3>{{ vm.box.list.title }}</h3>
 							<ul class="list-line">
@@ -72,21 +69,15 @@
 											{{ item.description }}
 										</span>
 										<span class="price">
-											{{ item.price | currency : "$" : 3 }}
+											{{ item.price | currency : "$ " : 3 }}
 										</span>
 									</li>
-									<!-- <li>
-										<span class="description">
-											Dolor sit Amet, consectetur adipiscing elit.
-										</span>
-									</li> -->
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 
 			<div class="well well-lg search-form" ng-class="{ 'opened': !vm.isCollapsed }">TotalItems: X 
 				<button type="button" class="btn btn-default" ng-click="vm.isCollapsed = !vm.isCollapsed">
@@ -101,7 +92,7 @@
 
 						<div class="col-xs-12 col-md-3">
 							<div class="input-group form-group">
-								<input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="vm.dateFrom" is-open="isDatepickerFromOpen" datepicker-options="vm.datepickerOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" placeholder="Seleccione..."/>
+								<input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="vm.dateFrom" is-open="isDatepickerFromOpen" datepicker-options="vm.datepickerOptions" ng-required="true" close-text="Cerrar" alt-input-formats="altInputFormats" placeholder="Seleccione..."/>
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-default" ng-click="isDatepickerFromOpen = !isDatepickerFromOpen">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
@@ -112,7 +103,7 @@
 
 						<div class="col-xs-12 col-md-3">
 							<div class="input-group form-group">
-								<input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="vm.dateTo" is-open="isDatepickerToOpen" datepicker-options="vm.datepickerOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" placeholder="Seleccione..."/>
+								<input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="vm.dateTo" is-open="isDatepickerToOpen" datepicker-options="vm.datepickerOptions" ng-required="true" close-text="Cerrar" alt-input-formats="altInputFormats" placeholder="Seleccione..."/>
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-default" ng-click="isDatepickerToOpen = !isDatepickerToOpen">
 										<i class="fa fa-calendar" aria-hidden="true"></i>
@@ -141,7 +132,6 @@
 							<button type="button" class="btn btn-success pull-right">Búscar</button>
 						</div>
 					</div>
-
 				</div>
 			</div>
 
@@ -155,45 +145,23 @@
 						<th>Sit</th>
 						<th>Amet</th>
 					</tr>
-					<tr>
+					<tr ng-repeat="item in vm.pagedData track by $index">
 						<td>
 							<input type="checkbox">
 						</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox">
-						</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="checkbox">
-						</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
-						<td>XXXXXXXXXXX</td>
+						<td>{{ item.lorem }}</td>
+						<td>{{ item.ipsum }}</td>
+						<td>{{ item.dolor }}</td>
+						<td>{{ item.sit }}</td>
+						<td>{{ item.amet  | currency : "$ " : 3 }}</td>
 					</tr>
 				</table>
 			</div>
 
 			<div class="container-fluid text-center">
-				<ul uib-pagination boundary-links="true" total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+				<ul uib-pagination boundary-links="true" total-items="vm.totalItems" ng-model="vm.currentPage" items-per-page="vm.itemsPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 			</div>
-
 		</div>
-
 
 		<script src="js/vendor/jquery.min.js"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>

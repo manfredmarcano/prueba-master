@@ -1,8 +1,7 @@
-app.controller("homeController", [function(){
+app.controller("homeController", ['$scope', function($scope) {
     var vm = this;
 
-    vm.isCollapsed = true;
-
+    /* Contenido de la caja */
     vm.box = {
         title: 'Título Caja',
         list: {
@@ -26,6 +25,10 @@ app.controller("homeController", [function(){
         ]
     };
 
+    /* Formulario oculto */
+    vm.isCollapsed = true;
+    
+    /* Datepickers */
     vm.dateFrom = null;
     vm.dateTo = null;
     vm.datepickerOptions = {
@@ -33,7 +36,118 @@ app.controller("homeController", [function(){
         initDate: new Date()
     };
 
-    vm.totalItems = 64;
-    vm.currentPage = 4;
+    /* Tabla y paginación */
+    vm.tableItems = [
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
 
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '4100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '70000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '10000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '700000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '20000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '4100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '70000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '10000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '700000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '20000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '4100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '70000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '10000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '700000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '20000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '4100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '70000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '10000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '700000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '20000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '300000' },
+
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '200000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '50000' },
+        { lorem: 'XXXXXXXXXX', ipsum: 'XXXXXXXXXX', dolor: 'XXXXXXXXXX', sit: 'XXXXXXXXXX', amet: '100000' },
+    ];
+
+    vm.totalItems = vm.tableItems.length;
+    vm.currentPage = 1;
+    vm.itemsPerPage = 10;
+
+    $scope.$watch('vm.currentPage', function() {
+        setPagingData(vm.currentPage);
+    });
+
+    function setPagingData(page) {
+        vm.currentPage = page;
+        vm.pagedData = vm.tableItems.slice((page - 1) * vm.itemsPerPage, page * vm.itemsPerPage);
+    }
 }]);

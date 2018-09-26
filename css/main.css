@@ -246,6 +246,7 @@ ul.list-circle {
     margin-bottom: 0;
     font-weight: bold;
 }
+
 .search-form.opened {
     -webkit-border-bottom-left-radius: 0;
     -moz-border-bottom-left-radius: 0;
@@ -282,6 +283,17 @@ ul.list-circle {
 
 .main-table table {
     margin-bottom: 0;
+}
+
+.main-table .table > tbody > tr > th {
+    background-color: #f5f5f5;
+}
+
+.main-table .table > tbody > tr > td {
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 12px;
+    padding: 10px 5px;
 }
 
 .main-table input[type=checkbox] {
