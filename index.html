@@ -11,6 +11,8 @@
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+
 		<!-- Normalize -->
 		<link rel="stylesheet" href="css/normalize.min.css">
 
@@ -18,6 +20,180 @@
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body ng-controller="homeController as vm">
+
+
+
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">
+						<img alt="Brand" src="img/logo.png">
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Enlace 1</a></li>
+						<li><a href="#">Enlace 2</a></li>
+						<li><a href="#">Enlace 3</a></li>
+					</ul>
+				</div>
+			
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+
+			<h1 class="page-title">Título</h1>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">{{ vm.box.title }}</h2>
+				</div>
+				<div class="panel-body">
+					
+					<div class="row ">   <!-- row-eq-height -->
+						<div class="col-xs-12 col-md-4">
+							<h3>{{ vm.box.list.title }}</h3>
+							<ul class="list-line">
+								<li ng-repeat="item in vm.box.list.items track by $index">{{ item }}</li>
+							</ul>
+						</div>
+						<div class="col-xs-12 col-md-8">
+							<div class="prices-box">
+								<ul class="list-circle">
+									<li ng-repeat="item in vm.box.pricesList track by $index">
+										<span class="description">
+											{{ item.description }}
+										</span>
+										<span class="price">
+											{{ item.price | currency : "$" : 3 }}
+										</span>
+									</li>
+									<!-- <li>
+										<span class="description">
+											Dolor sit Amet, consectetur adipiscing elit.
+										</span>
+									</li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="well well-lg search-form" ng-class="{ 'opened': !vm.isCollapsed }">TotalItems: X 
+				<button type="button" class="btn btn-default" ng-click="vm.isCollapsed = !vm.isCollapsed">
+					<span ng-if="vm.isCollapsed">Abrir</span>
+					<span ng-if="!vm.isCollapsed">Cerrar</span>
+				</button>
+			</div>
+
+			<div uib-collapse="vm.isCollapsed" class="search-form-content">
+				<div class="well well-lg">
+					<div class="row">
+
+						<div class="col-xs-12 col-md-3">
+							<div class="input-group form-group">
+								<input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="vm.dateFrom" is-open="isDatepickerFromOpen" datepicker-options="vm.datepickerOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" placeholder="Seleccione..."/>
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="isDatepickerFromOpen = !isDatepickerFromOpen">
+										<i class="fa fa-calendar" aria-hidden="true"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-3">
+							<div class="input-group form-group">
+								<input type="text" class="form-control" uib-datepicker-popup="dd-MM-yyyy" ng-model="vm.dateTo" is-open="isDatepickerToOpen" datepicker-options="vm.datepickerOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" placeholder="Seleccione..."/>
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" ng-click="isDatepickerToOpen = !isDatepickerToOpen">
+										<i class="fa fa-calendar" aria-hidden="true"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-3">
+							<select class="form-control form-group">
+								<option>Seleccione...</option>
+								<option>Option 1</option>
+								<option>Option 2</option>
+								<option>Option 3</option>
+								<option>Option 4</option>
+								<option>Option 5</option>
+							</select>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<input type="text" class="form-control form-group" placeholder="Búsqueda General...">
+						</div>
+						<div class="col-xs-12 col-md-6">
+							<button type="button" class="btn btn-success pull-right">Búscar</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="table-responsive main-table">
+				<table class="table table-condensed">
+					<tr>
+						<th></th>
+						<th>Lorem</th>
+						<th>Ipsum</th>
+						<th>Dolor</th>
+						<th>Sit</th>
+						<th>Amet</th>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="checkbox">
+						</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+						<td>XXXXXXXXXXX</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="container-fluid text-center">
+				<ul uib-pagination boundary-links="true" total-items="vm.totalItems" ng-model="vm.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</div>
+
+		</div>
+
 
 		<script src="js/vendor/jquery.min.js"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
