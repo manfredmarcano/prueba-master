@@ -1,19 +1,30 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="es" ng-app="testManfredBCH">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title></title>
-		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<title>Banco de Chile</title>
+		<meta name="description" content="">
+		
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Normalize -->
 		<link rel="stylesheet" href="css/normalize.min.css">
+
+		<!-- Custom CSS -->
 		<link rel="stylesheet" href="css/main.css">
-
 	</head>
-	<body>
+	<body ng-controller="homeController as vm">
 
-		<p>Hola Mundo</p>
-
+		<script src="js/vendor/jquery.min.js"></script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/vendor/angular.min.js"></script>
+		<script src="js/vendor/angular-animate.js"></script>
+		<script src="js/vendor/ui-bootstrap-tpls-2.5.0.min.js"></script>
+		<script src="app/app.js"></script>
+		<script src="app/controllers/home-controller.js"></script>
 	</body>
 </html>
